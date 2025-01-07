@@ -1,39 +1,35 @@
-@use '../Utils/variables' as var;
-@use '../Utils/keyframes';
-@use '../Utils/maps'as maps;
-@use '../Utils/mixins';
+@use "../Utils/variables" as var;
+@use "../Utils/keyframes";
+@use "../Utils/maps" as maps;
+@use "../Utils/mixins";
 
 .main__frame__section {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-     // etat initial avant animation
-     opacity: 0;
-     // animation d'apparition cf keyframe
-     animation : appear 3000ms ease-out forwards; 
-    //  Nom -- Durée -- timing -- fill-mode(persiste jusqu'au rechargement de la page)--
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  animation: appear 1000ms ease-out forwards;
 
-    @include mixins.desktop {
-        width: 100%;
-    }
+  @include mixins.desktop {
+    width: 100%;
+  }
 
-     // boucle pour gérer le décalage d'apparition des plats  par section. Où nth-child désigne l'enfant numéro n d'un élément parent (ici le parent est la section ?).
-    @for $i from 1 through 10 {
-        &:nth-child(#{$i}) {
-        animation-delay: $i * 0.3s;
-        }
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: $i * 0.1s;
     }
+  }
 
-    &__title {
-        font-weight: 300;
-        font-size: 16px;
-        margin: 0;
-        position: relative;
-    
-        &__line {
-            width: 40px;
-            border-bottom: 3px solid;
-            border-bottom-color: var.$light-green;
-        }
+  &__title {
+    font-weight: 300;
+    font-size: 16px;
+    margin: 0;
+    position: relative;
+
+    &__line {
+      width: 40px;
+      border-bottom: 3px solid;
+      border-bottom-color: var.$light-green;
     }
+  }
 }
